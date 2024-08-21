@@ -1,3 +1,4 @@
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -85,6 +86,7 @@ button.remove:hover {
     background-color: #c82333;
 }
 
+/* Table styles */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -94,6 +96,7 @@ table {
 th, td {
     padding: 10px;
     border: 1px solid #ced4da;
+    word-wrap: break-word; /* Allows text to wrap within cells */
 }
 
 th {
@@ -117,8 +120,10 @@ td.actions {
 td.task {
     text-align: left;
     width: calc(100% - 150px); /* Adjust task column width to fill the remaining space */
+    word-wrap: break-word; /* Ensure long text wraps within the cell */
 }
 
+/* Modal styles */
 .modal {
     display: none; /* Hidden by default */
     position: fixed;

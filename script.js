@@ -27,7 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         removeButton.textContent = 'Remove';
         removeButton.classList.add('remove');
         removeButton.onclick = () => {
-            taskList.removeChild(tr);
+            // Confirm before removing the task
+            if (confirm('Are you sure you want to delete this task?')) {
+                taskList.removeChild(tr);
+            }
         };
 
         tdActions.appendChild(editButton);

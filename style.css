@@ -176,3 +176,7 @@ li button {
 .cancel:hover {
     background-color: #c82333;
 }
+
+h2 {
+    text-align: start;
+}

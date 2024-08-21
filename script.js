@@ -2,20 +2,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const addButton = document.getElementById('add-task');
     const taskInput = document.getElementById('new-task');
     const taskList = document.getElementById('task-list');
-    let editingTask = null;
 
     function addTask(taskText) {
-        const li = document.createElement('li');
-        li.textContent = taskText;
+        const tr = document.createElement('tr');
+
+        const tdTask = document.createElement('td');
+        tdTask.classList.add('task');
+        tdTask.textContent = taskText;
+
+        const tdActions = document.createElement('td');
+        tdActions.classList.add('actions');
 
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
         editButton.classList.add('edit');
         editButton.onclick = () => {
-            const newTaskText = window.prompt('Edit your task:', li.textContent);
+            const newTaskText = window.prompt('Edit your task:', tdTask.textContent);
             if (newTaskText !== null && newTaskText.trim() !== '') {
-                li.firstChild.textContent = newTaskText.trim();
-                editingTask = null;
+                tdTask.textContent = newTaskText.trim();
             }
         };
 
@@ -23,26 +27,23 @@ document.addEventListener('DOMContentLoaded', () => {
         removeButton.textContent = 'Remove';
         removeButton.classList.add('remove');
         removeButton.onclick = () => {
-            taskList.removeChild(li);
+            taskList.removeChild(tr);
         };
 
-        li.appendChild(editButton);
-        li.appendChild(removeButton);
-        taskList.appendChild(li);
+        tdActions.appendChild(editButton);
+        tdActions.appendChild(removeButton);
+
+        tr.appendChild(tdTask);
+        tr.appendChild(tdActions);
+        taskList.appendChild(tr);
     }
 
     function handleAddTask() {
         const taskText = taskInput.value.trim();
         if (taskText === '') return;
 
-        if (editingTask) {
-            editingTask.firstChild.textContent = taskText;
-            taskInput.value = '';
-            editingTask = null;
-        } else {
-            addTask(taskText);
-            taskInput.value = '';
-        }
+        addTask(taskText);
+        taskInput.value = '';
     }
 
     addButton.addEventListener('click', handleAddTask);

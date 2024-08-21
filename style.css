@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-items: flex-start;    
     height: 100vh;
-    margin: 0px;
+    margin: 0;
     background-color: #f8f9fa;
 }
 
@@ -13,7 +13,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 700px; /* Increased width to accommodate wider task column */
     margin: 30px;
     max-width: 100%;
     text-align: center;
@@ -22,6 +22,12 @@ body {
 h1 {
     margin-bottom: 20px;
     color: #343a40;
+}
+
+h2 {
+    margin: 20px 0 10px;
+    color: #495057;
+    text-align: left;
 }
 
 .input-group {
@@ -51,6 +57,8 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    margin: 5px;
+    width: 100px;
 }
 
 button.add {
@@ -77,24 +85,38 @@ button.remove:hover {
     background-color: #c82333;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-li {
-    background-color: #e9ecef;
-    margin: 10px 0;
+th, td {
     padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    border: 1px solid #ced4da;
 }
 
-li button {
-    margin-left: 10px;
+th {
+    background-color: #f1f1f1;
+    color: #495057;
+}
+
+td {
+    background-color: #e9ecef;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8f9fa;
+}
+
+td.actions {
+    text-align: right;
+    width: 100px; /* Fixed width for actions column */
+}
+
+td.task {
+    text-align: left;
+    width: calc(100% - 150px); /* Adjust task column width to fill the remaining space */
 }
 
 .modal {
@@ -106,7 +128,7 @@ li button {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
 }
 
 .modal-content {
@@ -161,22 +183,18 @@ li button {
     margin-right: 10px;
 }
 
-.edit {
+.modal-content .edit {
     background-color: #007bff;
 }
 
-.edit:hover {
+.modal-content .edit:hover {
     background-color: #0056b3;
 }
 
-.cancel {
+.modal-content .cancel {
     background-color: #dc3545;
 }
 
-.cancel:hover {
+.modal-content .cancel:hover {
     background-color: #c82333;
-}
-
-h2 {
-    text-align: start;
 }
